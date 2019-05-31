@@ -115,6 +115,49 @@ class FunctionMockTests: XCTestCase {
 
     // MARK: Stubbing
     
+    func testStubBodyIsCalledWithCorrectArgument() {
+        let callExpectation = expectation(description: "Stub body executed")
+        sut.stub { (arg) in
+            callExpectation.fulfill()
+            XCTAssertEqual(arg, "foo")
+        }
+        
+        sut.recordCall("foo")
+        
+        waitForExpectations(timeout: 0.0, handler: nil)
+    }
+    
     // MARK: Reset
     
+    func testCallCountIsZeroAfterReset() {
+        sut.recordCall("foo")
+        sut.reset()
+        XCTAssertEqual(sut.callCount, 0)
+    }
+    
+    func testCalledReturnsFalseAfterReset() {
+        sut.recordCall("foo")
+        sut.reset()
+        XCTAssertEqual(sut.called, false)
+    }
+    
+    func testCalledOnceReturnsFalseAfterReset() {
+        sut.recordCall("foo")
+        sut.reset()
+        XCTAssertEqual(sut.calledOnce, false)
+    }
+
+    func testResetSetsArgumentToNil() {
+        sut.recordCall("foo")
+        sut.reset()
+        XCTAssertNil(sut.argument)
+    }
+    
+    // MARK: Misc
+    
+    func testNoArgumentRecordCallOverloadRecordsCall() {
+        let sut = FunctionMock<Void>(name: "test()")
+        sut.recordCall()
+        XCTAssertEqual(sut.callCount, 1)
+    }
 }
