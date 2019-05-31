@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2141349222A164B600CE8C6B /* Mokka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2141348822A164B600CE8C6B /* Mokka.framework */; };
-		2141349722A164B600CE8C6B /* MokkaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2141349622A164B600CE8C6B /* MokkaTests.swift */; };
 		2141349922A164B600CE8C6B /* Mokka.h in Headers */ = {isa = PBXBuildFile; fileRef = 2141348B22A164B600CE8C6B /* Mokka.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		214134A822A16CDF00CE8C6B /* FunctionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214134A422A16CDF00CE8C6B /* FunctionMock.swift */; };
+		214134AE22A1712F00CE8C6B /* FunctionMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214134AD22A1712F00CE8C6B /* FunctionMockTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +28,9 @@
 		2141348B22A164B600CE8C6B /* Mokka.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mokka.h; sourceTree = "<group>"; };
 		2141348C22A164B600CE8C6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2141349122A164B600CE8C6B /* MokkaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MokkaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2141349622A164B600CE8C6B /* MokkaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MokkaTests.swift; sourceTree = "<group>"; };
 		2141349822A164B600CE8C6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		214134A422A16CDF00CE8C6B /* FunctionMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionMock.swift; sourceTree = "<group>"; };
+		214134AD22A1712F00CE8C6B /* FunctionMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionMockTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +73,7 @@
 		2141348A22A164B600CE8C6B /* Mokka */ = {
 			isa = PBXGroup;
 			children = (
-				214134A222A1650D00CE8C6B /* FunctionMock */,
+				214134A322A16CDF00CE8C6B /* FunctionMock */,
 				2141348B22A164B600CE8C6B /* Mokka.h */,
 				2141348C22A164B600CE8C6B /* Info.plist */,
 			);
@@ -81,15 +83,24 @@
 		2141349522A164B600CE8C6B /* MokkaTests */ = {
 			isa = PBXGroup;
 			children = (
-				2141349622A164B600CE8C6B /* MokkaTests.swift */,
+				214134AC22A1711A00CE8C6B /* FunctionMock */,
 				2141349822A164B600CE8C6B /* Info.plist */,
 			);
 			path = MokkaTests;
 			sourceTree = "<group>";
 		};
-		214134A222A1650D00CE8C6B /* FunctionMock */ = {
+		214134A322A16CDF00CE8C6B /* FunctionMock */ = {
 			isa = PBXGroup;
 			children = (
+				214134A422A16CDF00CE8C6B /* FunctionMock.swift */,
+			);
+			path = FunctionMock;
+			sourceTree = "<group>";
+		};
+		214134AC22A1711A00CE8C6B /* FunctionMock */ = {
+			isa = PBXGroup;
+			children = (
+				214134AD22A1712F00CE8C6B /* FunctionMockTests.swift */,
 			);
 			path = FunctionMock;
 			sourceTree = "<group>";
@@ -202,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				214134A822A16CDF00CE8C6B /* FunctionMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2141349722A164B600CE8C6B /* MokkaTests.swift in Sources */,
+				214134AE22A1712F00CE8C6B /* FunctionMockTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +411,7 @@
 		214134A022A164B600CE8C6B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7E45353EU5;
 				INFOPLIST_FILE = MokkaTests/Info.plist;
@@ -417,6 +430,7 @@
 		214134A122A164B600CE8C6B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7E45353EU5;
 				INFOPLIST_FILE = MokkaTests/Info.plist;

@@ -19,14 +19,53 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
 // OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+import Foundation
 
-//! Project version number for Mokka.
-FOUNDATION_EXPORT double MokkaVersionNumber;
+public class FunctionMock<Args> {
+    
+    public let name: String
+    
+    public private(set) var callCount: Int = 0
+    
+    public var called: Bool {
+        return callCount >= 1
+    }
 
-//! Project version string for Mokka.
-FOUNDATION_EXPORT const unsigned char MokkaVersionString[];
+    public var calledOnce: Bool {
+        return callCount == 1
+    }
 
-// In this header, you should import all the public headers of your framework using statements like #import <Mokka/PublicHeader.h>
+    public private(set) var arguments: Args?
+    public var argument: Args? { return arguments }    // syntactic alternative for single-arg methods
+    
+    public init(name: String) {
+        self.name = name
+    }
+    
+    private var stubBlock: ((Args) -> Void)?
+    
+    public func stub(_ block: @escaping (Args) -> Void) {
+        stubBlock = block
+    }
+    
+    public func recordCall(_ args: Args) {
+        // record call and capture argumanets
+        callCount += 1
+        arguments = args
+        
+        // call
+        stubBlock?(args)
+    }
+    
+    public func reset() {
+        callCount = 0
+        arguments = nil
+    }
+}
 
-
+// special handling of functions without arguments to make the call-site less weird due to Void generic type
+extension FunctionMock where Args == Void {
+    public func recordCall() {
+        recordCall(())
+    }
+}
