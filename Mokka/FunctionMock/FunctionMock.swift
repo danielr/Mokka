@@ -21,51 +21,92 @@
 
 import Foundation
 
+/// A `FunctionMock` allows to record the calls to a function (the call count and the
+/// arguments), as well as to optionally stub the functions behavior.
+///
+/// Note: If you have a function that returns a value, you probably want to use
+/// `ReturningFunctionMock` instead, which allows to stub the return value.
+///
+/// The function mock is generic over the function's arguments' types. The generic
+/// parameter `Args` is usually a tuple of size n where n is the number of the
+/// function's arguments.
+///
+/// For a function with this signature
+///
+///     func doSomething(arg1: String, arg2: [Int])
+///
+/// declare the function mock like this:
+///
+///     let doSomethingFunc = FunctionMock<(String, [Int])>(name: "doSomething(arg1:arg2:)")
+///
 public class FunctionMock<Args> {
     
+    /// The name if the mocked function.
     public let name: String
     
+    /// The number of times the mocked function has been called.
     public private(set) var callCount: Int = 0
     
+    /// Returns true, iff the mocked function has been called once or more.
     public var called: Bool {
         return callCount >= 1
     }
 
+    /// Returns true, iff the mocked function has been called exactly once.
     public var calledOnce: Bool {
         return callCount == 1
     }
 
+    /// The arguments of the *last* function call, or `nil` if the function has never been called.
     public private(set) var arguments: Args?
-    public var argument: Args? { return arguments }    // syntactic alternative for single-arg methods
     
+    /// The argument of the *last* function call, or `nil` if the function has never been called.
+    public var argument: Args? { return arguments }    // syntactic alternative for single-arg methods
+
+    /// Creates a new instance of a function mock with the specified name.
+    ///
+    /// - parameters:
+    ///     - name: The name of the function. Use the standard #selector() syntax.
+    ///             This will only be used for informational purposes (e.g. by matchers).
     public init(name: String) {
         self.name = name
     }
     
     private var stubBlock: ((Args) -> Void)?
     
-    public func stub(_ block: @escaping (Args) -> Void) {
-        stubBlock = block
+    /// Provide a closure that will be executed when the function is called.
+    /// The closure will be provided with the function arguments.
+    ///
+    /// - parameters:
+    ///     - fn: A function to execute whenever the mocked function is called.
+    ///     - args: The original arguments that the mocked function has been called with.
+    public func stub(_ fn: @escaping (_ args: Args) -> Void) {
+        stubBlock = fn
     }
     
+    /// Record a call of the mocked function.
+    ///
+    /// - parameters:
+    ///     - args: The arguments that the mocked function has been called with.
     public func recordCall(_ args: Args) {
-        // record call and capture argumanets
         callCount += 1
         arguments = args
-        
-        // call
         stubBlock?(args)
     }
     
+    /// Reset the mock to its initial state. This will set the call count to 0 and
+    /// remove any recorded arguments.
     public func reset() {
         callCount = 0
         arguments = nil
     }
 }
 
-// special handling of functions without arguments to make the call-site less weird due to Void generic type
 extension FunctionMock where Args == Void {
+    
+    /// Record a call of the mocked function.
     public func recordCall() {
+        // special handling of functions without arguments to make the call-site less weird due to Void generic type
         recordCall(())
     }
 }
