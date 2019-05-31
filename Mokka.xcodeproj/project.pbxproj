@@ -11,6 +11,7 @@
 		2141349922A164B600CE8C6B /* Mokka.h in Headers */ = {isa = PBXBuildFile; fileRef = 2141348B22A164B600CE8C6B /* Mokka.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		214134A822A16CDF00CE8C6B /* FunctionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214134A422A16CDF00CE8C6B /* FunctionMock.swift */; };
 		214134AE22A1712F00CE8C6B /* FunctionMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214134AD22A1712F00CE8C6B /* FunctionMockTests.swift */; };
+		21E7DAA022A1B72B00E0CA91 /* ReturningFunctionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E7DA9F22A1B72B00E0CA91 /* ReturningFunctionMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		2141349822A164B600CE8C6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		214134A422A16CDF00CE8C6B /* FunctionMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionMock.swift; sourceTree = "<group>"; };
 		214134AD22A1712F00CE8C6B /* FunctionMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionMockTests.swift; sourceTree = "<group>"; };
+		21E7DA9F22A1B72B00E0CA91 /* ReturningFunctionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReturningFunctionMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				214134A422A16CDF00CE8C6B /* FunctionMock.swift */,
+				21E7DA9F22A1B72B00E0CA91 /* ReturningFunctionMock.swift */,
 			);
 			path = FunctionMock;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21E7DAA022A1B72B00E0CA91 /* ReturningFunctionMock.swift in Sources */,
 				214134A822A16CDF00CE8C6B /* FunctionMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
