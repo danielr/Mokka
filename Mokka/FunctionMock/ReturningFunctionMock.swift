@@ -41,11 +41,6 @@ public class ReturningFunctionMock<Args, ReturnValue>: FunctionMock<Args> {
     
     private var stubs: [FunctionStub<Args, ReturnValue>] = []
     
-    /// Return whether the mocked function has been stubbed.
-    public var isStubbed: Bool {
-        return !stubs.isEmpty
-    }
-    
     /// A return value that is used as a default.
     public var defaultReturnValue: ReturnValue?
     
@@ -53,6 +48,8 @@ public class ReturningFunctionMock<Args, ReturnValue>: FunctionMock<Args> {
     /// remove any recorded arguments and remove any stubs.
     public override func reset() {
         super.reset()
+        
+        defaultReturnValue = nil
         stubs.removeAll()
     }
     
@@ -91,7 +88,16 @@ public class ReturningFunctionMock<Args, ReturnValue>: FunctionMock<Args> {
         let stub = FunctionStub<Args, ReturnValue>(returnValue: returnValue, condition: condition)
         stubs.append(stub)
     }
-    
+
+    /// Stub a dynamic return value that is used by `recordCallAndReturn(_:)`.
+    ///
+    /// - parameters:
+    ///     - handler:   A closure that returns the value to be used as return value.
+    ///     - args:      The arguments of the original call to the mocked function.
+    func returns(_ handler: @escaping (_ args: Args) -> ReturnValue) {
+        returns(handler, when: nil)
+    }
+
     /// Stub a dynamic return value that is used by `recordCallAndReturn(_:)`, with an
     /// optional condition closure.
     ///
