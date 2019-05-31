@@ -4,7 +4,7 @@ A collection of helpers to make it easier to write testing mocks in Swift.
 ## Motivation
 Due to Swift's very static nature, mocking and stubbing is much harder to do than in other languages. There is no dynamic mocking framework like `OCMock` or `Mockito`. The usual approach is to just write your mock objects manually, like so:
 
-```
+```swift
 protocol Foo {
     func doSomething(arg: String) -> Int
 }
@@ -35,7 +35,7 @@ Mokka provides a testing helper class called `FunctionMock<Args>` (and a variant
 
 With these helpers it gets much more convenient to define your mock objects:
 
-```
+```swift
 class FooMock: Foo {
     let doSomethingFunc = ReturningFunctionMock<String, Int>(name: "doSomething(arg:)")
     func doSomething(arg: String) -> Int {
@@ -46,7 +46,7 @@ class FooMock: Foo {
 
 You can now use the function mock object for verification:
 
-```
+```swift
 func testSomething() {
     // ...
     XCTAssertEqual(myMock.doSomethingFunc.callCount, 2)
@@ -57,7 +57,7 @@ func testSomething() {
 
 and for stubbing:
 
-```
+```swift
 func testSomething() {
     // static stubbing
     myMock.doSomethingFunc.returns(100)
