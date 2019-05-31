@@ -83,6 +83,36 @@ class FunctionMockTests: XCTestCase {
     
     // MARK: Argument capturing
     
+    func testArgumentIsNilWhenNotCalled() {
+        XCTAssertNil(sut.argument)
+    }
+
+    func testArgumentsIsNilWhenNotCalled() {
+        XCTAssertNil(sut.arguments)
+    }
+
+    func testArgumentIsSetToArgumentAfterCalling() {
+        sut.recordCall("foo")
+        XCTAssertEqual(sut.argument, "foo")
+    }
+    
+    func testArgumentsIsSetToArgumentAfterCalling() {
+        sut.recordCall("foo")
+        XCTAssertEqual(sut.arguments, "foo")
+    }
+
+    func testArgumentIsSetToLastArgumentAfterCallingTwice() {
+        sut.recordCall("foo")
+        sut.recordCall("bar")
+        XCTAssertEqual(sut.argument, "bar")
+    }
+    
+    func testArgumentsIsSetToLastArgumentAfterCallingTwice() {
+        sut.recordCall("foo")
+        sut.recordCall("bar")
+        XCTAssertEqual(sut.arguments, "bar")
+    }
+
     // MARK: Stubbing
     
     // MARK: Reset
