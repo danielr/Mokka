@@ -84,7 +84,7 @@ public class ReturningFunctionMock<Args, ReturnValue>: FunctionMock<Args> {
     ///                  should be used. If the closure returns `true`, the return value will
     ///                  be used; if it returns `false`, it will be skipped. If the
     ///                  condition closure is `nil`, the return value will always be used.
-    func returns(_ returnValue: ReturnValue, when condition: ((Args) -> Bool)? = nil) {
+    public func returns(_ returnValue: ReturnValue, when condition: ((Args) -> Bool)? = nil) {
         let stub = FunctionStub<Args, ReturnValue>(returnValue: returnValue, condition: condition)
         stubs.append(stub)
     }
@@ -94,7 +94,7 @@ public class ReturningFunctionMock<Args, ReturnValue>: FunctionMock<Args> {
     /// - parameters:
     ///     - handler:   A closure that returns the value to be used as return value.
     ///     - args:      The arguments of the original call to the mocked function.
-    func returns(_ handler: @escaping (_ args: Args) -> ReturnValue) {
+    public func returns(_ handler: @escaping (_ args: Args) -> ReturnValue) {
         returns(handler, when: nil)
     }
 
@@ -108,7 +108,7 @@ public class ReturningFunctionMock<Args, ReturnValue>: FunctionMock<Args> {
     ///                  should be used. If the closure returns `true`, the return value will
     ///                  be used; if it returns `false`, it will be skipped. If the
     ///                  condition closure is `nil`, the return value will always be used.
-    func returns(_ handler: @escaping (_ args: Args) -> ReturnValue, when condition: ((Args) -> Bool)? = nil) {
+    public func returns(_ handler: @escaping (_ args: Args) -> ReturnValue, when condition: ((Args) -> Bool)? = nil) {
         let stub = FunctionStub<Args, ReturnValue>(handler: handler, condition: condition)
         stubs.append(stub)
     }
