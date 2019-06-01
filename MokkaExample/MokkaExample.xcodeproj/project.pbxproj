@@ -12,7 +12,11 @@
 		21E7DAB722A31FF000E0CA91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21E7DAB522A31FF000E0CA91 /* Main.storyboard */; };
 		21E7DAB922A31FF100E0CA91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21E7DAB822A31FF100E0CA91 /* Assets.xcassets */; };
 		21E7DABC22A31FF100E0CA91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21E7DABA22A31FF100E0CA91 /* LaunchScreen.storyboard */; };
-		21E7DAC722A31FF200E0CA91 /* MokkaExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E7DAC622A31FF200E0CA91 /* MokkaExampleTests.swift */; };
+		21E7DAC722A31FF200E0CA91 /* BarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E7DAC622A31FF200E0CA91 /* BarTests.swift */; };
+		21E7DAD322A3211300E0CA91 /* Foo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E7DAD222A3211300E0CA91 /* Foo.swift */; };
+		21E7DAD622A3215400E0CA91 /* FooMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E7DAD522A3215400E0CA91 /* FooMock.swift */; };
+		21E7DAD822A3225500E0CA91 /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E7DAD722A3225500E0CA91 /* Bar.swift */; };
+		21E7DAE522A3237800E0CA91 /* Mokka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21E7DADF22A3233200E0CA91 /* Mokka.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,6 +26,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 21E7DAAD22A31FEF00E0CA91;
 			remoteInfo = MokkaExample;
+		};
+		21E7DADE22A3233200E0CA91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21E7DAD922A3233200E0CA91 /* Mokka.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2141348822A164B600CE8C6B;
+			remoteInfo = Mokka;
+		};
+		21E7DAE022A3233200E0CA91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21E7DAD922A3233200E0CA91 /* Mokka.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2141349122A164B600CE8C6B;
+			remoteInfo = MokkaTests;
+		};
+		21E7DAE222A3237300E0CA91 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21E7DAD922A3233200E0CA91 /* Mokka.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2141348722A164B600CE8C6B;
+			remoteInfo = Mokka;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -34,8 +59,12 @@
 		21E7DABB22A31FF100E0CA91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21E7DABD22A31FF100E0CA91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21E7DAC222A31FF200E0CA91 /* MokkaExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MokkaExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		21E7DAC622A31FF200E0CA91 /* MokkaExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MokkaExampleTests.swift; sourceTree = "<group>"; };
+		21E7DAC622A31FF200E0CA91 /* BarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarTests.swift; sourceTree = "<group>"; };
 		21E7DAC822A31FF200E0CA91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21E7DAD222A3211300E0CA91 /* Foo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foo.swift; sourceTree = "<group>"; };
+		21E7DAD522A3215400E0CA91 /* FooMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooMock.swift; sourceTree = "<group>"; };
+		21E7DAD722A3225500E0CA91 /* Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
+		21E7DAD922A3233200E0CA91 /* Mokka.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mokka.xcodeproj; path = ../../Mokka/Mokka.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21E7DAE522A3237800E0CA91 /* Mokka.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +92,7 @@
 				21E7DAB022A31FEF00E0CA91 /* MokkaExample */,
 				21E7DAC522A31FF200E0CA91 /* MokkaExampleTests */,
 				21E7DAAF22A31FEF00E0CA91 /* Products */,
+				21E7DAE422A3237800E0CA91 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +108,7 @@
 		21E7DAB022A31FEF00E0CA91 /* MokkaExample */ = {
 			isa = PBXGroup;
 			children = (
+				21E7DAD122A3210300E0CA91 /* UnderTest */,
 				21E7DAB122A31FEF00E0CA91 /* AppDelegate.swift */,
 				21E7DAB322A31FEF00E0CA91 /* ViewController.swift */,
 				21E7DAB522A31FF000E0CA91 /* Main.storyboard */,
@@ -90,10 +122,45 @@
 		21E7DAC522A31FF200E0CA91 /* MokkaExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				21E7DAC622A31FF200E0CA91 /* MokkaExampleTests.swift */,
+				21E7DAD922A3233200E0CA91 /* Mokka.xcodeproj */,
+				21E7DAD422A3214400E0CA91 /* Mocks */,
+				21E7DAC622A31FF200E0CA91 /* BarTests.swift */,
 				21E7DAC822A31FF200E0CA91 /* Info.plist */,
 			);
 			path = MokkaExampleTests;
+			sourceTree = "<group>";
+		};
+		21E7DAD122A3210300E0CA91 /* UnderTest */ = {
+			isa = PBXGroup;
+			children = (
+				21E7DAD222A3211300E0CA91 /* Foo.swift */,
+				21E7DAD722A3225500E0CA91 /* Bar.swift */,
+			);
+			path = UnderTest;
+			sourceTree = "<group>";
+		};
+		21E7DAD422A3214400E0CA91 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				21E7DAD522A3215400E0CA91 /* FooMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		21E7DADA22A3233200E0CA91 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				21E7DADF22A3233200E0CA91 /* Mokka.framework */,
+				21E7DAE122A3233200E0CA91 /* MokkaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		21E7DAE422A3237800E0CA91 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +194,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				21E7DAE322A3237300E0CA91 /* PBXTargetDependency */,
 				21E7DAC422A31FF200E0CA91 /* PBXTargetDependency */,
 			);
 			name = MokkaExampleTests;
@@ -164,6 +232,12 @@
 			mainGroup = 21E7DAA522A31FEF00E0CA91;
 			productRefGroup = 21E7DAAF22A31FEF00E0CA91 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 21E7DADA22A3233200E0CA91 /* Products */;
+					ProjectRef = 21E7DAD922A3233200E0CA91 /* Mokka.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				21E7DAAD22A31FEF00E0CA91 /* MokkaExample */,
@@ -171,6 +245,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		21E7DADF22A3233200E0CA91 /* Mokka.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Mokka.framework;
+			remoteRef = 21E7DADE22A3233200E0CA91 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		21E7DAE122A3233200E0CA91 /* MokkaTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MokkaTests.xctest;
+			remoteRef = 21E7DAE022A3233200E0CA91 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		21E7DAAC22A31FEF00E0CA91 /* Resources */ = {
@@ -198,6 +289,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				21E7DAB422A31FEF00E0CA91 /* ViewController.swift in Sources */,
+				21E7DAD822A3225500E0CA91 /* Bar.swift in Sources */,
+				21E7DAD322A3211300E0CA91 /* Foo.swift in Sources */,
 				21E7DAB222A31FEF00E0CA91 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,7 +299,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21E7DAC722A31FF200E0CA91 /* MokkaExampleTests.swift in Sources */,
+				21E7DAD622A3215400E0CA91 /* FooMock.swift in Sources */,
+				21E7DAC722A31FF200E0CA91 /* BarTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +311,11 @@
 			isa = PBXTargetDependency;
 			target = 21E7DAAD22A31FEF00E0CA91 /* MokkaExample */;
 			targetProxy = 21E7DAC322A31FF200E0CA91 /* PBXContainerItemProxy */;
+		};
+		21E7DAE322A3237300E0CA91 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Mokka;
+			targetProxy = 21E7DAE222A3237300E0CA91 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
