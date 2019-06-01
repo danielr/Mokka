@@ -59,8 +59,8 @@
 		2141347E22A164B600CE8C6B = {
 			isa = PBXGroup;
 			children = (
-				2141348A22A164B600CE8C6B /* Mokka */,
-				2141349522A164B600CE8C6B /* MokkaTests */,
+				2141348A22A164B600CE8C6B /* Sources */,
+				2141349522A164B600CE8C6B /* Tests */,
 				2141348922A164B600CE8C6B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,23 +74,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2141348A22A164B600CE8C6B /* Mokka */ = {
+		2141348A22A164B600CE8C6B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				214134A322A16CDF00CE8C6B /* FunctionMock */,
 				2141348B22A164B600CE8C6B /* Mokka.h */,
 				2141348C22A164B600CE8C6B /* Info.plist */,
 			);
-			path = Mokka;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		2141349522A164B600CE8C6B /* MokkaTests */ = {
+		2141349522A164B600CE8C6B /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				214134AC22A1711A00CE8C6B /* FunctionMock */,
 				2141349822A164B600CE8C6B /* Info.plist */,
 			);
-			path = MokkaTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		214134A322A16CDF00CE8C6B /* FunctionMock */ = {
@@ -376,7 +376,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Mokka/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -401,7 +401,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Mokka/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -422,7 +422,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7E45353EU5;
-				INFOPLIST_FILE = MokkaTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -441,7 +441,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7E45353EU5;
-				INFOPLIST_FILE = MokkaTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
