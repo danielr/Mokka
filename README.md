@@ -71,3 +71,11 @@ func testSomething() {
     myMock.doSomethingFunc.returns(789)
 }
 ```
+
+## Author
+
+Mokka has been created and is maintained by Daniel Rinser, [@danielrinser](https://twitter.com/danielrinser).
+
+## License
+
+Mokka is available under the [MIT License](https://github.com/danielr/Mokka/blob/master/LICENSE).
