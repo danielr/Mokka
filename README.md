@@ -1,4 +1,8 @@
 # ☕️ Mokka
+
+[![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://opensource.org/licenses/MIT)
+[![Twitter](https://img.shields.io/badge/twitter-@danielrinser-blue.svg)](http://twitter.com/danielrinser)
+
 A collection of helpers to make it easier to write testing mocks in Swift.
 
 ## Motivation
