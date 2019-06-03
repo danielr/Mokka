@@ -41,7 +41,7 @@ import Foundation
 ///
 public class FunctionMock<Args> {
     
-    /// The name if the mocked function.
+    /// The name of the mocked function.
     public let name: String
     
     /// The number of times the mocked function has been called.
@@ -67,7 +67,8 @@ public class FunctionMock<Args> {
     ///
     /// - parameters:
     ///     - name: The name of the function. Use the standard #selector() syntax.
-    ///             This will only be used for informational purposes (e.g. by matchers).
+    ///             This will only be used for informational purposes (e.g. by
+    ///             matchers or in error messages).
     public init(name: String) {
         self.name = name
     }
