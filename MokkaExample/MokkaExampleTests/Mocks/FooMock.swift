@@ -11,6 +11,18 @@ import Mokka
 @testable import MokkaExample
 
 class FooMock: Foo {
+
+    let bazProperty = PropertyMock<Int>(name: "baz")
+    var baz: Int {
+        get { return bazProperty.get() }
+        set { bazProperty.set(newValue) }
+    }
+
+    let readonlyBazProperty = PropertyMock<String>(name: "readonlyBaz")
+    var readonlyBaz: String {
+        get { return readonlyBazProperty.get() }
+    }
+
     
     let doSomethingFunc = ReturningFunctionMock<String, Int>(name: "doSomething(arg:)")
     func doSomething(arg: String) -> Int {

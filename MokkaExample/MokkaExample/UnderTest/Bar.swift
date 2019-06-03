@@ -17,6 +17,7 @@ class Bar {
     
     func doSomethingWithFoo() -> Int {
         let value = foo.doSomething(arg: "abc")
-        return value * 3
+        let multiplier = foo.baz
+        return value * multiplier
     }
 }

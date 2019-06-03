@@ -9,5 +9,8 @@
 import Foundation
 
 protocol Foo {
+    var baz: Int { get set }
+    var readonlyBaz: String { get }
+    
     func doSomething(arg: String) -> Int
 }

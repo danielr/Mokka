@@ -21,7 +21,9 @@ class BarTests: XCTestCase {
 
     func testExample() {
         fooMock.doSomethingFunc.returns(42)
+        fooMock.bazProperty.value = 10
         let result = sut.doSomethingWithFoo()
-        XCTAssertEqual(result, 126)
+        XCTAssertEqual(result, 420)
+        XCTAssertTrue(fooMock.bazProperty.hasBeenRead)
     }
 }
