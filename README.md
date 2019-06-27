@@ -59,17 +59,17 @@ func testSomething() {
 }
 ```
 
-and for stubbing:
+and for faking the return value:
 
 ```swift
 func testSomething() {
-    // static stubbing
+    // static return value
     myMock.doSomethingFunc.returns(100)
 
-    // dynamic stubbing
+    // dynamic return value
     myMock.doSomethingFunc.returns { $0 + 200 }   // $0 is the argument(s) passed to the method
 
-    // conditional stubbing
+    // conditional return value
     myMock.doSomethingFunc.returns(123, when: { $0 == "foo" })
     myMock.doSomethingFunc.returns(456, when: { $0 == "bar" })
     myMock.doSomethingFunc.returns(789)
@@ -140,6 +140,40 @@ someMock.myFunction.stub { arg in
 	delegate.somethingHappened(with: arg)
 }
 ```
+
+### Faking the return value
+
+For returning functions it's crucial to be able to fake the return value. Mokka provides 3 ways if doing that: Static return values, dynamic return values and conditional return values. Let's have a look at each of those:
+
+#### Providing a static return value
+
+For most cases it's sufficient to provide a simple static value that should be returned by the mock implementation:
+
+```swift
+deepThoughtMock.answerToEverythingFunc.returns(42)
+```
+
+#### Providing a return value dynamically
+
+Sometimes it's convenient to provide a return value that depends in the functions arguments. You can do that by providing a closure: 
+
+```swift
+calculatorMock.addFunc.returns { args in
+	return args.firstValue + args.secondValue
+}
+```
+
+#### Providing return values conditionally
+
+Both, static and dynamic return values can also be provided conditionally:
+
+```swift
+    myMock.doSomethingFunc.returns(123, when: { $0 == "foo" })
+    myMock.doSomethingFunc.returns(456, when: { $0 == "bar" })
+    myMock.doSomethingFunc.returns(789)	   // otherwise
+}
+```
+
 ## Author
 
 Mokka has been created and is maintained by Daniel Rinser, [@danielrinser](https://twitter.com/danielrinser).
