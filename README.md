@@ -1,5 +1,6 @@
 # ☕️ Mokka
 
+[![Bitrise build status](https://img.shields.io/bitrise/1b64319566421dbf/master.svg?token=aK7YocCEHyQlNQ9l43nE3g)](https://app.bitrise.io/app/1b64319566421dbf)
 [![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://opensource.org/licenses/MIT)
 [![Twitter](https://img.shields.io/badge/twitter-@danielrinser-blue.svg)](http://twitter.com/danielrinser)
 
