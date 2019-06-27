@@ -84,6 +84,62 @@ func testSomething() {
 ## Installation
 
 
+## Documentation
+
+### Types of mocks
+
+There are currently three types of mock helpers available:
+
+* **`FunctionMock`:** Allows to record the calls to a function (the call count and the arguments), as well as to optionally stub the function's behavior. Use this for functions that have a `Void` return value.
+* **`ReturningFunctionMock`:** Provides the same functionality as `FunctionMock`, but adds the ability to fake the returned value. Use this for functions that have a non-void return value.
+* **`PropertyMock`:** Allows to provide fake values for a property and record whether a property has been read or set.
+
+### How to implement your mocks
+
+
+
+### Call count verification
+
+A common use case for mocks is to verify if a method has been called, and sometimes specifically how often it has been called. For that, both `FunctionMock` and `ReturningFunctionMock` provide some properties:
+
+* `called: Bool` Returns whether the method has been called (once or more).
+* `calledOnce: Bool` Returns whether the method has been called exactly once.
+* `callCount: Int` The number of times the method has been called.
+
+```swift
+XCTAssertTrue(someMock.myFunction.called)
+XCTAssertTrue(someMock.myFunction.calledOnce)
+XCTAssertEqual(someMock.myFunction.callCount, 3)
+```
+
+### Argument verification
+
+In addition to verifying if a function has been called, you often also want to check the argument(s) with which the function has been called. You can do that via the `arguments` property:
+
+```
+XCTAssertEqual(someMock.myFunction.arguments.foo, "value")
+XCTAssertEqual(someMock.myFunction.arguments.bar, 42)
+```
+
+(This requires that you follow the recommended practice of naming the tuple members, see above.)
+
+
+For single-argument functions you can also use the `argument` property, which looks a bit nicer:
+
+```
+XCTAssertEqual(someMock.myFunction.argument, "value")
+```
+
+### Stubbing
+
+Sometimes it's necessary to stub the behavior of a function, for example to introduce some important side-effects. One common example for this is calling a delegate method. You can do that by providing a closure that will be executed when the function is called. The closure will be provided with the function arguments:
+
+```swift
+let delegate = FooDelegateMock()
+someMock.myFunction.stub { arg in
+	delegate.somethingHappened(with: arg)
+}
+```
 ## Author
 
 Mokka has been created and is maintained by Daniel Rinser, [@danielrinser](https://twitter.com/danielrinser).
