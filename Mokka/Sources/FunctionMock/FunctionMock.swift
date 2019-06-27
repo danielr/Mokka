@@ -22,7 +22,7 @@
 import Foundation
 
 /// A `FunctionMock` allows to record the calls to a function (the call count and the
-/// arguments), as well as to optionally stub the functions behavior.
+/// arguments), as well as to optionally stub the function's behavior.
 ///
 /// Note: If you have a function that returns a value, you probably want to use
 /// `ReturningFunctionMock` instead, which allows to stub the return value.

@@ -6,7 +6,7 @@
 A collection of helpers to make it easier to write testing mocks in Swift.
 
 ## Motivation
-Due to Swift's very static nature, mocking and stubbing is much harder to do than in other languages. There is no dynamic mocking framework like `OCMock` or `Mockito`. The usual approach is to just write your mock objects manually, like so:
+Due to Swift's very static nature, mocking and stubbing is much harder to do than in other languages. There are no dynamic mocking framework like `OCMock` or `Mockito`. The usual approach is to just write your mock objects manually, like so:
 
 ```swift
 protocol Foo {
@@ -75,6 +75,14 @@ func testSomething() {
     myMock.doSomethingFunc.returns(789)
 }
 ```
+
+## Requirements
+
+* Xcode 10.2
+* Swift 5.0
+
+## Installation
+
 
 ## Author
 
