@@ -174,6 +174,35 @@ Both, static and dynamic return values can also be provided conditionally:
 }
 ```
 
+### Mocking properties
+
+In many cases it is enough to just implement any property requirements of the mocked protocol by declaring a stored property with a default value in your mock. However, when you want to be able to explicitly track whether a property has been read or written, Mokka's `PropertyMock` can be helpful.
+
+This is how you declare create it in your mock implementation:
+
+```swift
+class SomeMock {
+    let fooProperty = PropertyMock<Int>(name: "foo")
+    var foo: Int {
+        get { return fooProperty.get() }
+        set { fooProperty.set(newValue) }
+    }
+}
+```
+
+Then you can use it in your tests like this:
+
+```swift
+someMock.fooProperty.value = 10
+
+// do something
+
+XCTAssertTrue(someMock.fooProperty.hasBeenRead)
+XCTAssertFalse(someMock.fooProperty.hasBeenSet
+```
+
+Another nice touch is that you don't need to provide a default value for the property if you use `PropertyMock` (the `get()` method fails with a `preconditionFailure` if there is no value).
+
 ## Author
 
 Mokka has been created and is maintained by Daniel Rinser, [@danielrinser](https://twitter.com/danielrinser).
