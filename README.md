@@ -105,7 +105,6 @@ For the examples below, let's assume we want to mock the following protocol:
 
 ```swift
 protocol Engine {
-
     func turnOn()
     func turnOff()
     var isOn: Bool { get }
@@ -125,7 +124,6 @@ For functions with **no arguments**, that should be `Void`:
 
 ```swift
 class EngineMock: Engine {
-
     let turnOnFunc = FunctionMock<Void>(name: "turnOn()")
     func turnOn() {
         turnOnFunc.recordCall()
@@ -139,7 +137,6 @@ For functions with a **single argument**, just use that argument's type:
 
 ```swift
 class EngineMock: Engine {
-
     let setSpeedFunc = FunctionMock<Float>(name: "setSpeed(to:)")
     func setSpeed(to value: Float) {
         setSpeedFunc.recordCall(value)
@@ -153,7 +150,6 @@ For functions with **more than one argument**, you need to use a tuple to repres
 
 ```swift
 class EngineMock: Engine {
-
     let setSpeedInUnitFunc = FunctionMock<(value: Float, unit: UnitSpeed)>(name: "setSpeed(to:unit:)")
     func setSpeed(to value: Float, in unit: UnitSpeed) {
         setSpeedInUnitFunc.recordCall((value: value, unit: unit))
@@ -170,7 +166,6 @@ For functions with a return value, use `ReturningFunctionMock<Args, ReturnValue>
 
 ```swift
 class EngineMock: Engine {
-
     let currentSpeedFunc = ReturningFunctionMock<UnitSpeed, Double>(name: "currentSpeed(in:)")
     func currentSpeed(in unit: UnitSpeed) -> Double {
         return currentSpeedFunc.recordCallAndReturn(unit)
@@ -192,7 +187,6 @@ In many cases it is enough to just implement property requirements of the mocked
 
 ```swift
 class EngineMock: Engine {
-
     let isOnProperty = PropertyMock<Bool>(name: "isOn")
     var isOn: Bool {
         get { return isOnProperty.get() }
@@ -224,7 +218,7 @@ XCTAssertEqual(engineMock.setSpeedFunc.callCount, 3)
 
 In addition to verifying if a function has been called, you often also want to check the argument(s) with which the function has been called. You can do that via the `arguments` property:
 
-```
+```swift
 XCTAssertEqual(engineMock.setSpeedInUnitFunc.arguments.value, 100.0)
 XCTAssertEqual(engineMock.setSpeedInUnitFunc.arguments.unit, .kilometersPerHour)
 ```
@@ -234,7 +228,7 @@ XCTAssertEqual(engineMock.setSpeedInUnitFunc.arguments.unit, .kilometersPerHour)
 
 For single-argument functions (where there's no arguments tuple) you can also use the `argument` property, which looks a bit nicer:
 
-```
+```swift
 XCTAssertEqual(engineMock.setSpeedFunc.argument, 100.0)
 ```
 
@@ -245,7 +239,7 @@ Sometimes it's necessary to stub the behavior of a function, for example to intr
 ```swift
 let delegate = FooDelegateMock()
 someMock.myFunction.stub { arg in
-	delegate.somethingHappened(with: arg)
+    delegate.somethingHappened(with: arg)
 }
 ```
 
