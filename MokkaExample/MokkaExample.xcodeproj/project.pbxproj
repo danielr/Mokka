@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2146EC6C22C61BBE0003D55C /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146EC6B22C61BBE0003D55C /* Engine.swift */; };
+		2146EC6F22C61BC50003D55C /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146EC6E22C61BC50003D55C /* Car.swift */; };
+		2146EC7122C61C410003D55C /* EngineMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146EC7022C61C410003D55C /* EngineMock.swift */; };
+		2146EC7422C61C820003D55C /* CarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146EC7322C61C820003D55C /* CarTests.swift */; };
+		2146EC7622C641020003D55C /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146EC7522C641020003D55C /* Battery.swift */; };
+		2146EC7822C641C50003D55C /* BatteryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2146EC7722C641C50003D55C /* BatteryMock.swift */; };
 		21E7DAB222A31FEF00E0CA91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E7DAB122A31FEF00E0CA91 /* AppDelegate.swift */; };
 		21E7DAB422A31FEF00E0CA91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E7DAB322A31FEF00E0CA91 /* ViewController.swift */; };
 		21E7DAB722A31FF000E0CA91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21E7DAB522A31FF000E0CA91 /* Main.storyboard */; };
 		21E7DAB922A31FF100E0CA91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21E7DAB822A31FF100E0CA91 /* Assets.xcassets */; };
 		21E7DABC22A31FF100E0CA91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21E7DABA22A31FF100E0CA91 /* LaunchScreen.storyboard */; };
-		21E7DAC722A31FF200E0CA91 /* BarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E7DAC622A31FF200E0CA91 /* BarTests.swift */; };
-		21E7DAD322A3211300E0CA91 /* Foo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E7DAD222A3211300E0CA91 /* Foo.swift */; };
-		21E7DAD622A3215400E0CA91 /* FooMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E7DAD522A3215400E0CA91 /* FooMock.swift */; };
-		21E7DAD822A3225500E0CA91 /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E7DAD722A3225500E0CA91 /* Bar.swift */; };
 		21E7DAE522A3237800E0CA91 /* Mokka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21E7DADF22A3233200E0CA91 /* Mokka.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2146EC6B22C61BBE0003D55C /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
+		2146EC6E22C61BC50003D55C /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		2146EC7022C61C410003D55C /* EngineMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineMock.swift; sourceTree = "<group>"; };
+		2146EC7322C61C820003D55C /* CarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarTests.swift; sourceTree = "<group>"; };
+		2146EC7522C641020003D55C /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
+		2146EC7722C641C50003D55C /* BatteryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryMock.swift; sourceTree = "<group>"; };
 		21E7DAAE22A31FEF00E0CA91 /* MokkaExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MokkaExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21E7DAB122A31FEF00E0CA91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21E7DAB322A31FEF00E0CA91 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,11 +67,7 @@
 		21E7DABB22A31FF100E0CA91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21E7DABD22A31FF100E0CA91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21E7DAC222A31FF200E0CA91 /* MokkaExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MokkaExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		21E7DAC622A31FF200E0CA91 /* BarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarTests.swift; sourceTree = "<group>"; };
 		21E7DAC822A31FF200E0CA91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		21E7DAD222A3211300E0CA91 /* Foo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foo.swift; sourceTree = "<group>"; };
-		21E7DAD522A3215400E0CA91 /* FooMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooMock.swift; sourceTree = "<group>"; };
-		21E7DAD722A3225500E0CA91 /* Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
 		21E7DAD922A3233200E0CA91 /* Mokka.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Mokka.xcodeproj; path = ../../Mokka/Mokka.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2146EC7222C61C740003D55C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				2146EC7322C61C820003D55C /* CarTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		21E7DAA522A31FEF00E0CA91 = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +136,7 @@
 			children = (
 				21E7DAD922A3233200E0CA91 /* Mokka.xcodeproj */,
 				21E7DAD422A3214400E0CA91 /* Mocks */,
-				21E7DAC622A31FF200E0CA91 /* BarTests.swift */,
+				2146EC7222C61C740003D55C /* Tests */,
 				21E7DAC822A31FF200E0CA91 /* Info.plist */,
 			);
 			path = MokkaExampleTests;
@@ -133,8 +145,9 @@
 		21E7DAD122A3210300E0CA91 /* UnderTest */ = {
 			isa = PBXGroup;
 			children = (
-				21E7DAD222A3211300E0CA91 /* Foo.swift */,
-				21E7DAD722A3225500E0CA91 /* Bar.swift */,
+				2146EC6B22C61BBE0003D55C /* Engine.swift */,
+				2146EC7522C641020003D55C /* Battery.swift */,
+				2146EC6E22C61BC50003D55C /* Car.swift */,
 			);
 			path = UnderTest;
 			sourceTree = "<group>";
@@ -142,7 +155,8 @@
 		21E7DAD422A3214400E0CA91 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				21E7DAD522A3215400E0CA91 /* FooMock.swift */,
+				2146EC7022C61C410003D55C /* EngineMock.swift */,
+				2146EC7722C641C50003D55C /* BatteryMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -288,10 +302,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2146EC7622C641020003D55C /* Battery.swift in Sources */,
 				21E7DAB422A31FEF00E0CA91 /* ViewController.swift in Sources */,
-				21E7DAD822A3225500E0CA91 /* Bar.swift in Sources */,
-				21E7DAD322A3211300E0CA91 /* Foo.swift in Sources */,
+				2146EC6F22C61BC50003D55C /* Car.swift in Sources */,
 				21E7DAB222A31FEF00E0CA91 /* AppDelegate.swift in Sources */,
+				2146EC6C22C61BBE0003D55C /* Engine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,8 +314,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21E7DAD622A3215400E0CA91 /* FooMock.swift in Sources */,
-				21E7DAC722A31FF200E0CA91 /* BarTests.swift in Sources */,
+				2146EC7422C61C820003D55C /* CarTests.swift in Sources */,
+				2146EC7122C61C410003D55C /* EngineMock.swift in Sources */,
+				2146EC7822C641C50003D55C /* BatteryMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
