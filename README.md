@@ -292,6 +292,17 @@ XCTAssertTrue(someMock.fooProperty.hasBeenRead)
 XCTAssertFalse(someMock.fooProperty.hasBeenSet
 ```
 
+## Example
+
+You can find a simple example project in [MokkaExample](MokkaExample/).
+
+It includes
+
+* a subject under test (`Car`)
+* two mocked protocols (`Engine` and `Battery`)
+
+It is a minimal example, but it should be enough to get you started with the concepts of Mokka.
+
 ## Author
 
 Mokka has been created and is maintained by Daniel Rinser, [@danielrinser](https://twitter.com/danielrinser).
