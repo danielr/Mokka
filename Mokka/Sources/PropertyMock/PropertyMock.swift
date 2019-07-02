@@ -52,7 +52,7 @@ import Foundation
 public class PropertyMock<T> {
     
     /// The name of the mocked property.
-    public let name: String
+    public let name: String?
 
     /// The value of the mocked property.
     ///
@@ -69,9 +69,9 @@ public class PropertyMock<T> {
     /// Creates a new instance of a property mock with the specified name.
     ///
     /// - parameters:
-    ///     - name: The name of the property. This will only be used for informational
+    ///     - name: (optional) The name of the property. This will only be used for informational
     ///             purposes (e.g. by matchers or in error messages).
-    public init(name: String) {
+    public init(name: String?) {
         self.name = name
     }
 
@@ -85,7 +85,11 @@ public class PropertyMock<T> {
         hasBeenRead = true
         
         guard let value = value else {
-            preconditionFailure("No value for property '\(name)'")
+            if let propertyName = name {
+                preconditionFailure("No value for property '\(propertyName)'")
+            } else {
+                preconditionFailure("No value for property")
+            }
         }
         return value
     }

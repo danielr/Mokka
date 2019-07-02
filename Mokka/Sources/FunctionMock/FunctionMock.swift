@@ -42,7 +42,7 @@ import Foundation
 public class FunctionMock<Args> {
     
     /// The name of the mocked function.
-    public let name: String
+    public let name: String?
     
     /// The number of times the mocked function has been called.
     public private(set) var callCount: Int = 0
@@ -66,10 +66,10 @@ public class FunctionMock<Args> {
     /// Creates a new instance of a function mock with the specified name.
     ///
     /// - parameters:
-    ///     - name: The name of the function. Use the standard #selector() syntax.
+    ///     - name: (optional) The name of the function. Use the standard #selector() syntax.
     ///             This will only be used for informational purposes (e.g. by
     ///             matchers or in error messages).
-    public init(name: String) {
+    public init(name: String? = nil) {
         self.name = name
     }
     

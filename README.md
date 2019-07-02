@@ -43,7 +43,7 @@ With these helpers it gets much more convenient to define your mock objects:
 
 ```swift
 class FooMock: Foo {
-    let doSomethingFunc = ReturningFunctionMock<String, Int>(name: "doSomething(arg:)")
+    let doSomethingFunc = ReturningFunctionMock<String, Int>()
     func doSomething(arg: String) -> Int {
         return doSomethingFunc.recordCallAndReturn(arg)
     }
@@ -132,6 +132,8 @@ class EngineMock: Engine {
     // ...
 }
 ```
+
+*Note: The `name` parameter in the mock initializers is optional. It is purely informational and might be useful for error messages (e.g. better assertion error messages). It is good practice to provide the names in the standard Swift #selector syntax.*
 
 For functions with a **single argument**, just use that argument's type:
 

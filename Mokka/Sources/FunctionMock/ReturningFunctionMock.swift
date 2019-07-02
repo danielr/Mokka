@@ -67,7 +67,7 @@ public class ReturningFunctionMock<Args, ReturnValue>: FunctionMock<Args> {
             if let returnValue = defaultReturnValue {
                 return returnValue
             }
-            preconditionFailure("No return value for \(name)")
+            preconditionFailure("No return value for \(name ?? "function")")
         }
         
         return stub.handle(args)
