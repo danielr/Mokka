@@ -10,11 +10,10 @@ let package = Package(
             targets: ["Mokka"]),
     ],
     targets: [
-            .target(name: "Mokka"),
-            .testTarget(
-                name: "MokkaTests",
-                dependencies: ["Mokka"]
-            )
-        ]
-    )
+        .target(name: "Mokka"),
+        .testTarget(
+            name: "MokkaTests",
+            dependencies: ["Mokka"]
+        )
+    ]
 )
