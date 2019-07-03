@@ -16,8 +16,8 @@ let package = Package(
         ),
         .testTarget(
             name: "MokkaTests",
-            path: "Mokka/Tests",
-            dependencies: ["Mokka"]
+            dependencies: ["Mokka"],
+            path: "Mokka/Tests"
         )
     ]
 )
