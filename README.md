@@ -85,6 +85,26 @@ func testSomething() {
 
 ## Installation
 
+### Swift Package Manager
+
+You can install Mokka using Swift Package Manager. Just add this repository as a dependency to your `Package.swift` file (and don't forget to also add `"Mokka"` as a dependency in your test target):
+
+```swift
+dependencies: [
+	.package(url: "https://github.com/danielr/Mokka", from: "1.0.0")
+	// ...
+]
+```
+
+### Carthage
+
+To install Mokka with Carthage, add this to your Cartfile:
+
+```
+github "danielr/Mokka"
+```
+
+Then drag the built `Mokka.framework` to your project and make sure it's [added to the unit test target](https://github.com/Carthage/Carthage#adding-frameworks-to-unit-tests-or-a-framework), not the main app target. If you see issues errors like "The bundle xxx couldn’t be loaded because it is damaged or missing necessary resources.", then you [might need to tweak your test target's **Runtime Search Paths**](https://github.com/Carthage/Carthage/issues/1002).
 
 ## Documentation
 
