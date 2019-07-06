@@ -85,6 +85,14 @@ func testSomething() {
 
 ## Installation
 
+### CocoaPods
+
+To install Mokka via CocoaPods, just add the `Mokka` pod for your **test target** to the Podfile:
+
+```ruby
+pod 'Mokka'
+```
+
 ### Swift Package Manager
 
 You can install Mokka using Swift Package Manager. Just add this repository as a dependency to your `Package.swift` file (and don't forget to also add `"Mokka"` as a dependency in your test target):
