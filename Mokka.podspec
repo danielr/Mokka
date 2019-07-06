@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name                      = "Mokka"
-  spec.version                   = "0.1.0"
+  spec.version                   = "1.0.0"
   spec.summary                   = "A collection of helpers to make it easier to write testing mocks in Swift."
   spec.homepage                  = "https://github.com/danielr/Mokka"
   spec.license                   = { :type => "MIT", :file => "LICENSE" }
