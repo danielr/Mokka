@@ -101,8 +101,8 @@ You can install Mokka using Swift Package Manager. Just add this repository as a
 
 ```swift
 dependencies: [
-	.package(url: "https://github.com/danielr/Mokka", from: "1.0.0")
-	// ...
+    .package(url: "https://github.com/danielr/Mokka", from: "1.0.0")
+    // ...
 ]
 ```
 
