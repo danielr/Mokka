@@ -2,7 +2,7 @@
     <img src="Mokka_logo.png" width="600” max-width="90%" alt="Mokka" />
 </p>
 
-<p style="text-align:center;">
+<p align="center">
 	<a href="https://app.bitrise.io/app/1b64319566421dbf"><img src="https://img.shields.io/bitrise/1b64319566421dbf/master.svg?token=aK7YocCEHyQlNQ9l43nE3g" alt="Bitrise build status" /></a>
 	<a href="https://codecov.io/gh/danielr/Mokka"><img src="https://img.shields.io/codecov/c/github/danielr/Mokka.svg" alt="Code coverage" /></a>
 	<a href="https://cocoapods.org/pods/Mokka"><img src="https://img.shields.io/cocoapods/v/Mokka.svg" alt="CocoaPods" /></a>
@@ -11,9 +11,10 @@
 	<a href="http://twitter.com/danielrinser"><img src="https://img.shields.io/badge/twitter-@danielrinser-blue.svg" alt="Twitter" /></a>
 </p>
 
-<h3 style="text-align:center;">
+<h3 align="center">
 	A collection of helpers to make it easier to write testing mocks in Swift.
 </h3>
+
 
 ## Motivation
 Due to Swift's very static nature, mocking and stubbing is much harder to do than in other languages. There are no dynamic mocking framework like `OCMock` or `Mockito`. The usual approach is to just write your mock objects manually, like so:
