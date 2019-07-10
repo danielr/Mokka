@@ -63,6 +63,9 @@ public class FunctionMock<Args> {
     /// The argument of the *last* function call, or `nil` if the function has never been called.
     public var argument: Args? { return arguments }    // syntactic alternative for single-arg methods
 
+    private var stubBlock: ((Args) -> Void)?
+    private var error: Error?
+    
     /// Creates a new instance of a function mock with the specified name.
     ///
     /// - parameters:
@@ -72,8 +75,6 @@ public class FunctionMock<Args> {
     public init(name: String? = nil) {
         self.name = name
     }
-    
-    private var stubBlock: ((Args) -> Void)?
     
     /// Provide a closure that will be executed when the function is called.
     /// The closure will be provided with the function arguments.
@@ -95,19 +96,42 @@ public class FunctionMock<Args> {
         stubBlock?(args)
     }
     
+    /// Record a call of the mocked function and potentially throw an error, if configured.
+    ///
+    /// - parameters:
+    ///     - args: The arguments that the mocked function has been called with.
+    /// - throws: The error that has been configured via `throws(_:)`, if any.
+    public func recordCallAndThrow(_ args: Args) throws {
+        recordCall(args)
+        if let error = error {
+            throw error
+        }
+    }
+    
+    /// Configure an error to be thrown by the mocked function.
+    public func `throws`(_ error: Error) {
+        self.error = error
+    }
+
     /// Reset the mock to its initial state. This will set the call count to 0 and
     /// remove any recorded arguments.
     public func reset() {
         callCount = 0
         arguments = nil
+        error = nil
     }
 }
 
 extension FunctionMock where Args == Void {
     
-    /// Record a call of the mocked function.
+    /// Record a call of the mocked function without arguments.
     public func recordCall() {
         // special handling of functions without arguments to make the call-site less weird due to Void generic type
         recordCall(())
+    }
+    
+    /// Record a call of the mocked function without arguments and potentially throw an error, if configured.
+    public func recordCallAndThrow() throws {
+        try recordCallAndThrow(())
     }
 }
