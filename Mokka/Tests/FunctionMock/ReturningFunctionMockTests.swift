@@ -228,4 +228,10 @@ class ReturningFunctionMockTests: XCTestCase {
         sut.defaultReturnValue = 0
         XCTAssertEqual(sut.recordCallAndReturn("foo"), 0)
     }
+    
+    func testResetSetsErrorToNil() {
+        sut.throws(TestError.errorOne)
+        sut.reset()
+        XCTAssertNoThrow(try sut.recordCallAndReturnOrThrow("foo"))
+    }
 }
