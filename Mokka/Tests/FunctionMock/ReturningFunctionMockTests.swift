@@ -142,6 +142,47 @@ class ReturningFunctionMockTests: XCTestCase {
         XCTAssertEqual(result, 42)
     }
 
+    // MARK: Throwing
+    
+    func testDoesNotThrowErrorIfNotExplicitlyConfigured() {
+        sut.returns(42)
+        XCTAssertNoThrow(try sut.recordCallAndReturnOrThrow("foo"))
+    }
+    
+    func testThrowsErrorAfterSettingError() {
+        sut.throws(TestError.errorOne)
+        XCTAssertThrowsError(try sut.recordCallAndReturnOrThrow("foo")) { error in
+            XCTAssert(error is TestError, "Unexpected error type thrown")
+            XCTAssertEqual(error as! TestError, TestError.errorOne)
+        }
+    }
+    
+    func testRecordCallAndReturnOrThrowRecordsCallsWhenNotThrowing() {
+        sut.returns(42)
+        XCTAssertNoThrow(try sut.recordCallAndReturnOrThrow("foo"))
+        XCTAssertNoThrow(try sut.recordCallAndReturnOrThrow("bar"))
+        XCTAssertEqual(sut.callCount, 2)
+    }
+    
+    func testRecordCallAndReturnOrThrowCapturesArgumentsWhenNotThrowing() {
+        sut.returns(42)
+        XCTAssertNoThrow(try sut.recordCallAndReturnOrThrow("foo"))
+        XCTAssertEqual(sut.argument, "foo")
+    }
+
+    func testRecordCallAndReturnOrThrowRecordsCallsWhenThrowing() {
+        sut.throws(TestError.errorOne)
+        XCTAssertThrowsError(try sut.recordCallAndReturnOrThrow("foo"))
+        XCTAssertThrowsError(try sut.recordCallAndReturnOrThrow("bar"))
+        XCTAssertEqual(sut.callCount, 2)
+    }
+    
+    func testRecordCallAndReturnOrThrowCapturesArgumentsWhenThrowing() {
+        sut.throws(TestError.errorOne)
+        XCTAssertThrowsError(try sut.recordCallAndReturnOrThrow("foo"))
+        XCTAssertEqual(sut.argument, "foo")
+    }
+
     // MARK: Reset
     
     func testCallCountIsZeroAfterReset() {

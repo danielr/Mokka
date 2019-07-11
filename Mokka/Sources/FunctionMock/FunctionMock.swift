@@ -64,7 +64,7 @@ public class FunctionMock<Args> {
     public var argument: Args? { return arguments }    // syntactic alternative for single-arg methods
 
     private var stubBlock: ((Args) -> Void)?
-    private var error: Error?
+    internal var error: Error?
     
     /// Creates a new instance of a function mock with the specified name.
     ///
