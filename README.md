@@ -47,6 +47,7 @@ Mokka provides a testing helper class called `FunctionMock<Args>` (and a variant
 * Recording function/method calls for verification (*Has the method been called?*, *How often has the method been called?*)
 * Capturing the arguments for verification (*With which arguments has the method been called?*)
 * Stubbing return values (also conditionally) (*This method should return `42` if called with argument `"x"`*)
+* Faking errors to be thrown (*This method should throw `SomeError.somethingWentWrong`*)
 
 With these helpers it gets much more convenient to define your mock objects:
 
@@ -142,7 +143,7 @@ For the examples below, let's assume we want to mock the following protocol:
 
 ```swift
 protocol Engine {
-    func turnOn()
+    func turnOn() throws
     func turnOff()
     var isOn: Bool { get }
 
@@ -161,16 +162,16 @@ For functions with **no arguments**, that should be `Void`:
 
 ```swift
 class EngineMock: Engine {
-    let turnOnFunc = FunctionMock<Void>(name: "turnOn()")
-    func turnOn() {
-        turnOnFunc.recordCall()
+    let turnOffFunc = FunctionMock<Void>(name: "turnOff()")
+    func turnOff() {
+        turnOffFunc.recordCall()
     }
 	
     // ...
 }
 ```
 
-*Note: The `name` parameter in the mock initializers is optional. It is purely informational and might be useful for error messages (e.g. better assertion error messages). It is good practice to provide the names in the standard Swift #selector syntax.*
+**Note:** *The `name` parameter in the mock initializers is optional. It is purely informational and might be useful for error messages (e.g. better assertion error messages). It is good practice to provide the names in the standard Swift #selector syntax.*
 
 For functions with a **single argument**, just use that argument's type:
 
@@ -218,6 +219,22 @@ For the arguments of returning methods, the same rules apply as for non-returnin
 
 * A mock for a function that has no arguments and returns a Bool would be declared as `ReturningFunctionMock<Void, Bool>`
 * A mock for a function that has two arguments of type `Int` and `String?` and returns a `Double` would be declared as `ReturningFunctionMock<(arg1: Int, arg2: String?), Double>`
+
+
+#### Throwing functions
+
+To be able to fake errors to be thrown by your mocked functions, you need to use a different variant of recording the call for those methods. For void functions, use `recordCallAndThrow(...)`, and for returning functions use `recordCallAndReturnOrThrow(...)`. These variants are declared to be throwing, so you need to use the `try` keyword when calling them.
+
+```swift
+class EngineMock: Engine {
+    let turnOnFunc = FunctionMock<Void>(name: "turnOn()")
+    func turnOn() throws {
+        try turnOnFunc.recordCallAndThrow()
+    }
+	
+    // ...
+}
+```
 
 
 #### Properties
@@ -316,6 +333,15 @@ engineMock.currentSpeedFunc.returns(62.137, when: { $0 == .milesPerHour })
 engineMock.currentSpeedFunc.returns(0)	   // otherwise
 ```
 
+### Faking an error to be thrown
+
+For throwing functions (that use `recordCallAndThrow()`/`recordCallAndReturnOrThrow()` in the mocks), you can fake an error to be thrown. Use `throws(_:)` to configure the error:
+
+```swift
+// make the engine mock throw an error in turnOn()
+engineMock.turnOnFunc.throws(EngineError.outOfGas)
+```
+
 ### Mocking properties
 
 This is how you use properties that are backed by `PropertyMock` in your testing code:
@@ -326,7 +352,7 @@ someMock.fooProperty.value = 10	// use value to access the underlying property v
 // do something
 
 XCTAssertTrue(someMock.fooProperty.hasBeenRead)
-XCTAssertFalse(someMock.fooProperty.hasBeenSet
+XCTAssertFalse(someMock.fooProperty.hasBeenSet)
 ```
 
 ## Example
