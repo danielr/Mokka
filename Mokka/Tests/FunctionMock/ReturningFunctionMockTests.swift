@@ -186,25 +186,29 @@ class ReturningFunctionMockTests: XCTestCase {
     // MARK: Reset
     
     func testCallCountIsZeroAfterReset() {
-        sut.recordCall("foo")
+        sut.defaultReturnValue = 0
+        _ = sut.recordCallAndReturn("foo")
         sut.reset()
         XCTAssertEqual(sut.callCount, 0)
     }
     
     func testCalledReturnsFalseAfterReset() {
-        sut.recordCall("foo")
+        sut.defaultReturnValue = 0
+        _ = sut.recordCallAndReturn("foo")
         sut.reset()
         XCTAssertEqual(sut.called, false)
     }
     
     func testCalledOnceReturnsFalseAfterReset() {
-        sut.recordCall("foo")
+        sut.defaultReturnValue = 0
+        _ = sut.recordCallAndReturn("foo")
         sut.reset()
         XCTAssertEqual(sut.calledOnce, false)
     }
     
     func testResetSetsArgumentToNil() {
-        sut.recordCall("foo")
+        sut.defaultReturnValue = 0
+        _ = sut.recordCallAndReturn("foo")
         sut.reset()
         XCTAssertNil(sut.argument)
     }
@@ -232,6 +236,7 @@ class ReturningFunctionMockTests: XCTestCase {
     func testResetSetsErrorToNil() {
         sut.throws(TestError.errorOne)
         sut.reset()
+        sut.defaultReturnValue = 0
         XCTAssertNoThrow(try sut.recordCallAndReturnOrThrow("foo"))
     }
 }
