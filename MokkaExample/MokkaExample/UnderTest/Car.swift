@@ -17,8 +17,14 @@ class Car {
         self.battery = battery
     }
     
-    func turnOn() {
-        engine.turnOn()
+    @discardableResult
+    func turnOn() -> Bool {
+        do {
+            try engine.turnOn()
+            return true
+        } catch {
+            return false
+        }
     }
     
     func setRadioVolume(to volume: Float) {

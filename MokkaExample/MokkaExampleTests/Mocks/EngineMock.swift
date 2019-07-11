@@ -12,8 +12,8 @@ import Mokka
 
 class EngineMock: Engine {
     let turnOnFunc = FunctionMock<Void>(name: "turnOn()")
-    func turnOn() {
-        turnOnFunc.recordCall()
+    func turnOn() throws {
+        try turnOnFunc.recordCallAndThrow()
     }
     
     let turnOffFunc = FunctionMock<Void>(name: "turnOff()")
