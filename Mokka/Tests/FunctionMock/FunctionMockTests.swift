@@ -127,6 +127,31 @@ class FunctionMockTests: XCTestCase {
         waitForExpectations(timeout: 0.0, handler: nil)
     }
     
+    // MARK: Throwing
+    
+    func testDoesNotThrowErrorIfNotExplicitlyConfigured() {
+        XCTAssertNoThrow(try sut.recordCallAndThrow("foo"))
+    }
+    
+    func testThrowsErrorAfterSettingError() {
+        sut.throws(TestError.errorOne)
+        XCTAssertThrowsError(try sut.recordCallAndThrow("foo")) { error in
+            XCTAssert(error is TestError, "Unexpected error type thrown")
+            XCTAssertEqual(error as! TestError, TestError.errorOne)
+        }
+    }
+
+    func testRecordCallAndThrowRecordsCalls() {
+        XCTAssertNoThrow(try sut.recordCallAndThrow("foo"))
+        XCTAssertNoThrow(try sut.recordCallAndThrow("bar"))
+        XCTAssertEqual(sut.callCount, 2)
+    }
+
+    func testRecordCallAndThrowCapturesArguments() {
+        XCTAssertNoThrow(try sut.recordCallAndThrow("foo"))
+        XCTAssertEqual(sut.argument, "foo")
+    }
+    
     // MARK: Reset
     
     func testCallCountIsZeroAfterReset() {
@@ -153,11 +178,23 @@ class FunctionMockTests: XCTestCase {
         XCTAssertNil(sut.argument)
     }
     
+    func testResetSetsErrorToNil() {
+        sut.throws(TestError.errorOne)
+        sut.reset()
+        XCTAssertNoThrow(try sut.recordCallAndThrow("foo"))
+    }
+    
     // MARK: Misc
     
     func testNoArgumentRecordCallOverloadRecordsCall() {
         let sut = FunctionMock<Void>(name: "test()")
         sut.recordCall()
+        XCTAssertEqual(sut.callCount, 1)
+    }
+
+    func testNoArgumentRecordCallAndThrowOverloadRecordsCall() {
+        let sut = FunctionMock<Void>(name: "test()")
+        XCTAssertNoThrow(try sut.recordCallAndThrow())
         XCTAssertEqual(sut.callCount, 1)
     }
 }

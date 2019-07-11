@@ -24,8 +24,20 @@ class CarTests: XCTestCase {
     // MARK: - Starting the car
     
     func testTurningOnTheCarTurnsOnTheEngine() {
-        car.turnOn()
+        let result = car.turnOn()
+
         XCTAssertTrue(engineMock.turnOnFunc.called)
+        XCTAssertEqual(result, true)
+    }
+    
+    func testTurnOnReturnsFalseIfTurningOnEngineFails() {
+        // make the engine mock throw an error in turnOn()
+        engineMock.turnOnFunc.throws(EngineError.outOfGas)
+        
+        let result = car.turnOn()
+        
+        XCTAssertTrue(engineMock.turnOnFunc.called)
+        XCTAssertEqual(result, false)
     }
     
     // MARK: - Acceleration

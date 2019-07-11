@@ -8,8 +8,12 @@
 
 import Foundation
 
+enum EngineError: Error {
+    case outOfGas
+}
+
 protocol Engine {
-    func turnOn()
+    func turnOn() throws
     func turnOff()
     var isOn: Bool { get }
     

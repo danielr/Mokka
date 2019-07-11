@@ -59,19 +59,28 @@ public class ReturningFunctionMock<Args, ReturnValue>: FunctionMock<Args> {
     ///
     /// - parameters:
     ///     - args: The arguments that the mocked function has been called with.
+    /// - returns: The return value configured via `returns(...)`.
     public func recordCallAndReturn(_ args: Args) -> ReturnValue {
         recordCall(args)
-        
-        // stub return value
-        guard let stub = stubs.first(where: { $0.shouldHandle(args) }) else {
-            if let returnValue = defaultReturnValue {
-                return returnValue
-            }
-            preconditionFailure("No return value for \(name ?? "function")")
-        }
-        
-        return stub.handle(args)
+        return stubbedReturnValue(for: args)
     }
+    
+    /// Record a call of the mocked function and potentially throw an error, if configured.
+    ///
+    /// - parameters:
+    ///     - args: The arguments that the mocked function has been called with.
+    /// - returns: The return value configured via `returns(...)`.
+    /// - throws: The error that has been configured via `throws(_:)`, if any.
+    public func recordCallAndReturnOrThrow(_ args: Args) throws -> ReturnValue {
+        recordCall(args)
+
+        if let error = error {
+            throw error
+        } else {
+            return stubbedReturnValue(for: args)
+        }
+    }
+
     
     // MARK: - Stubbing
     
@@ -111,6 +120,20 @@ public class ReturningFunctionMock<Args, ReturnValue>: FunctionMock<Args> {
     public func returns(_ handler: @escaping (_ args: Args) -> ReturnValue, when condition: ((Args) -> Bool)? = nil) {
         let stub = FunctionStub<Args, ReturnValue>(handler: handler, condition: condition)
         stubs.append(stub)
+    }
+    
+    // MARK: - Private
+    
+    /// Get the stubbed return value for the specified arguments.
+    private func stubbedReturnValue(for args: Args) -> ReturnValue {
+        guard let stub = stubs.first(where: { $0.shouldHandle(args) }) else {
+            if let returnValue = defaultReturnValue {
+                return returnValue
+            }
+            preconditionFailure("No return value for \(name ?? "function")")
+        }
+        
+        return stub.handle(args)
     }
     
     // MARK: - FunctionStub

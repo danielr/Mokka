@@ -142,28 +142,73 @@ class ReturningFunctionMockTests: XCTestCase {
         XCTAssertEqual(result, 42)
     }
 
+    // MARK: Throwing
+    
+    func testDoesNotThrowErrorIfNotExplicitlyConfigured() {
+        sut.returns(42)
+        XCTAssertNoThrow(try sut.recordCallAndReturnOrThrow("foo"))
+    }
+    
+    func testThrowsErrorAfterSettingError() {
+        sut.throws(TestError.errorOne)
+        XCTAssertThrowsError(try sut.recordCallAndReturnOrThrow("foo")) { error in
+            XCTAssert(error is TestError, "Unexpected error type thrown")
+            XCTAssertEqual(error as! TestError, TestError.errorOne)
+        }
+    }
+    
+    func testRecordCallAndReturnOrThrowRecordsCallsWhenNotThrowing() {
+        sut.returns(42)
+        XCTAssertNoThrow(try sut.recordCallAndReturnOrThrow("foo"))
+        XCTAssertNoThrow(try sut.recordCallAndReturnOrThrow("bar"))
+        XCTAssertEqual(sut.callCount, 2)
+    }
+    
+    func testRecordCallAndReturnOrThrowCapturesArgumentsWhenNotThrowing() {
+        sut.returns(42)
+        XCTAssertNoThrow(try sut.recordCallAndReturnOrThrow("foo"))
+        XCTAssertEqual(sut.argument, "foo")
+    }
+
+    func testRecordCallAndReturnOrThrowRecordsCallsWhenThrowing() {
+        sut.throws(TestError.errorOne)
+        XCTAssertThrowsError(try sut.recordCallAndReturnOrThrow("foo"))
+        XCTAssertThrowsError(try sut.recordCallAndReturnOrThrow("bar"))
+        XCTAssertEqual(sut.callCount, 2)
+    }
+    
+    func testRecordCallAndReturnOrThrowCapturesArgumentsWhenThrowing() {
+        sut.throws(TestError.errorOne)
+        XCTAssertThrowsError(try sut.recordCallAndReturnOrThrow("foo"))
+        XCTAssertEqual(sut.argument, "foo")
+    }
+
     // MARK: Reset
     
     func testCallCountIsZeroAfterReset() {
-        sut.recordCall("foo")
+        sut.defaultReturnValue = 0
+        _ = sut.recordCallAndReturn("foo")
         sut.reset()
         XCTAssertEqual(sut.callCount, 0)
     }
     
     func testCalledReturnsFalseAfterReset() {
-        sut.recordCall("foo")
+        sut.defaultReturnValue = 0
+        _ = sut.recordCallAndReturn("foo")
         sut.reset()
         XCTAssertEqual(sut.called, false)
     }
     
     func testCalledOnceReturnsFalseAfterReset() {
-        sut.recordCall("foo")
+        sut.defaultReturnValue = 0
+        _ = sut.recordCallAndReturn("foo")
         sut.reset()
         XCTAssertEqual(sut.calledOnce, false)
     }
     
     func testResetSetsArgumentToNil() {
-        sut.recordCall("foo")
+        sut.defaultReturnValue = 0
+        _ = sut.recordCallAndReturn("foo")
         sut.reset()
         XCTAssertNil(sut.argument)
     }
@@ -186,5 +231,12 @@ class ReturningFunctionMockTests: XCTestCase {
         sut.reset()
         sut.defaultReturnValue = 0
         XCTAssertEqual(sut.recordCallAndReturn("foo"), 0)
+    }
+    
+    func testResetSetsErrorToNil() {
+        sut.throws(TestError.errorOne)
+        sut.reset()
+        sut.defaultReturnValue = 0
+        XCTAssertNoThrow(try sut.recordCallAndReturnOrThrow("foo"))
     }
 }
