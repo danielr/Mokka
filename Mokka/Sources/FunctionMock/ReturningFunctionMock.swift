@@ -62,7 +62,7 @@ public class ReturningFunctionMock<Args, ReturnValue>: FunctionMock<Args> {
     /// - returns: The return value configured via `returns(...)`.
     public func recordCallAndReturn(_ args: Args) -> ReturnValue {
         recordCall(args)
-        return getReturnValue(args: args)
+        return stubbedReturnValue(for: args)
     }
     
     /// Record a call of the mocked function and potentially throw an error, if configured.
@@ -77,7 +77,7 @@ public class ReturningFunctionMock<Args, ReturnValue>: FunctionMock<Args> {
         if let error = error {
             throw error
         } else {
-            return getReturnValue(args: args)
+            return stubbedReturnValue(for: args)
         }
     }
 
@@ -125,7 +125,7 @@ public class ReturningFunctionMock<Args, ReturnValue>: FunctionMock<Args> {
     // MARK: - Private
     
     /// Get the stubbed return value for the specified arguments.
-    private func getReturnValue(args: Args) -> ReturnValue {
+    private func stubbedReturnValue(for args: Args) -> ReturnValue {
         guard let stub = stubs.first(where: { $0.shouldHandle(args) }) else {
             if let returnValue = defaultReturnValue {
                 return returnValue
